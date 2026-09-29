@@ -393,7 +393,7 @@ img{display:block;max-width:100%}
     <div class="row" style="margin-top:32px"><button class="btn btn-primary btn-lg" data-go="book">Κλείσε ραντεβού</button><button class="btn btn-secondary btn-lg" data-go="quiz">Βρες τι σου ταιριάζει</button></div>
    </div>
    <div class="hero-img"><img src="https://images.unsplash.com/photo-1754037783933-c25ff9f68f87?auto=format&fit=crop&q=75&w=1000&h=1250" alt="Ήσυχη γωνιά με πολυθρόνα και φυτό στο γραφείο συνεδριών" fetchpriority="high">
-    <div class="hero-note"><strong>15 λεπτά, δωρεάν</strong>Η πρώτη γνωριμία, χωρίς καμία δέσμευση.</div></div>
+   </div>
   </div>
   <div class="facts">
    <div><b>12+</b><span>χρόνια κλινικής εμπειρίας</span></div>
@@ -473,7 +473,7 @@ img{display:block;max-width:100%}
  </div></div><div style="height:56px"></div>
 </section>
 <section data-page="services" hidden>
- <div class="container"><div class="page-title"><h1>Υπηρεσίες</h1><p class="lead muted">Διάλεξε αυτό που σου ταιριάζει· αν δεν είσαι σίγουρος/η, ξεκίνα με μια δωρεάν γνωριμία ή κάνε το σύντομο κουίζ.</p></div>
+ <div class="container"><div class="page-title"><h1>Υπηρεσίες</h1><p class="lead muted">Διάλεξε αυτό που σου ταιριάζει· αν δεν είσαι σίγουρος/η, κάνε το σύντομο κουίζ.</p></div>
  <div class="grid g-2" id="svcGrid" style="margin-top:24px"></div>
  <div class="alert" style="margin-top:24px"><i data-i="info"></i><div>Στις online συνεδρίες λαμβάνεις αυτόματα σύνδεσμο Google Meet στο email σου. Χρειάζεσαι μόνο σταθερή σύνδεση και έναν ήσυχο χώρο. <button class="btn btn-ghost btn-sm" data-go="quiz">Βρες τι σου ταιριάζει</button></div></div>
  </div><div style="height:64px"></div>
@@ -517,7 +517,7 @@ img{display:block;max-width:100%}
    <div class="card" style="margin-top:16px"><h4>Κοινοποίηση</h4><div class="row"><button class="btn btn-secondary btn-sm" id="shareCopy"><i data-i="copy"></i>Αντιγραφή συνδέσμου</button><button class="btn btn-ghost btn-sm" onclick="Psy.toast('Άνοιγμα κοινοποίησης στο Facebook (προσομοίωση)','link')">Facebook</button><button class="btn btn-ghost btn-sm" onclick="Psy.toast('Άνοιγμα κοινοποίησης στο LinkedIn (προσομοίωση)','link')">LinkedIn</button></div></div></aside>
  </div>
  <div class="card" style="margin-top:48px"><div class="row" style="flex-wrap:nowrap;align-items:flex-start"><div class="avatar" style="width:56px;height:56px;font-size:18px">ΜΠ</div><div><h4 style="margin-bottom:4px">Δρ. Μαρία Παπαδοπούλου</h4><p class="muted small" style="margin:0">Ψυχολόγος – Ψυχοθεραπεύτρια στη Θεσσαλονίκη. Γράφω για όσα συναντώ συχνά στο γραφείο μου, με την ελπίδα να σε βοηθήσουν να νιώσεις λιγότερο μόνος/η.</p></div></div></div>
- <div class="hero" style="margin-top:32px;grid-template-columns:1fr;padding:40px"><div><h2>Θέλεις να το συζητήσουμε;</h2><p class="lead">Ένα πρώτο βήμα μπορεί να είναι μια δωρεάν γνωριμία 15 λεπτών.</p><button class="btn btn-primary btn-lg" data-go="book">Κλείσε ραντεβού</button></div></div>
+ <div class="hero" style="margin-top:32px;grid-template-columns:1fr;padding:40px"><div><h2>Θέλεις να το συζητήσουμε;</h2><p class="lead">Ένα πρώτο βήμα μπορεί να είναι ένα ραντεβού γνωριμίας.</p><button class="btn btn-primary btn-lg" data-go="book">Κλείσε ραντεβού</button></div></div>
  <h2 style="margin-top:56px">Σχετικά άρθρα</h2><div class="grid g-auto" id="artRelated" style="margin-top:16px"></div>
  <div class="card" style="margin-top:48px;background:var(--brand-soft)"><h3>Εγγραφή στο ενημερωτικό δελτίο</h3><p class="muted">Ένα σύντομο μήνυμα κάθε δύο εβδομάδες με το νέο άρθρο. Μπορείς να διαγραφείς οποιαδήποτε στιγμή.</p><form class="row" id="nlForm2" novalidate style="align-items:flex-start"><div class="field" style="margin:0;flex:1;min-width:220px"><label class="sr" for="nlMail2">Email</label><input class="input" id="nlMail2" type="email" placeholder="το email σου" autocomplete="email"><div class="err" hidden></div></div><button class="btn btn-primary">Εγγραφή</button></form></div>
  </div><div style="height:64px"></div>
@@ -605,10 +605,9 @@ img{display:block;max-width:100%}
 (function(){
 var $=Psy.$,$$=Psy.$$,G=Psy.G,esc=Psy.esc,T=Psy.TODAY;
 var IMG=function(id,w,h){return 'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&q=70&w='+w+(h?'&h='+h:'')};
-var SVC_IMG={intro:'1573497491208-6b1acb260507',ind:'1573497620053-ea5300f94f21',couple:'1551801679-787f2accc402',teen:'1603977385628-d7e6d19f0370',online:'1637580679264-d9b13ab94c57'};
+var SVC_IMG={ind:'1573497620053-ea5300f94f21',couple:'1551801679-787f2accc402',teen:'1603977385628-d7e6d19f0370',online:'1637580679264-d9b13ab94c57'};
 var BLOG_IMG={1:'1620809975674-10b8ff5f8e58',2:'1542338347-4fff3276af78',3:'1589169011402-8b2cbd1ee593',4:'1758520144705-b39e11ff32e3',5:'1694274928091-7d533e146597',6:'1787496994323-59ac5cff09f9'};
 var SVC=[
- {id:'intro',n:'Δωρεάν γνωριμία',d:15,p:0,i:'sparkle',t:'Μια σύντομη τηλεφωνική ή online συζήτηση για να γνωριστούμε και να δεις αν νιώθεις άνετα να συνεχίσουμε.'},
  {id:'ind',n:'Ατομική ψυχοθεραπεία',d:50,p:60,i:'user',t:'Ένας προσωπικός χώρος για άγχος, χαμηλή διάθεση, αυτοεκτίμηση, πένθος και αλλαγές στη ζωή, με γνωσιακή-συμπεριφορική προσέγγιση.'},
  {id:'couple',n:'Θεραπεία ζεύγους',d:60,p:80,i:'users',t:'Για ζευγάρια που θέλουν να βελτιώσουν την επικοινωνία, να διαχειριστούν συγκρούσεις και να ξαναβρούν τη σύνδεσή τους.'},
  {id:'teen',n:'Συμβουλευτική εφήβων και γονέων',d:50,p:65,i:'heart',t:'Στήριξη για εφήβους και για γονείς που θέλουν να καταλάβουν και να συνοδεύσουν το παιδί τους σε δύσκολες περιόδους.'},
@@ -616,7 +615,7 @@ var SVC=[
 ];
 var TOPICS=['Άγχος και κρίσεις πανικού','Χαμηλή διάθεση','Σχέσεις και ζευγάρια','Εργασιακή εξουθένωση','Αυτοεκτίμηση','Πένθος και απώλειες','Εφηβεία και γονεϊκότητα','Αλλαγές στη ζωή','Διαχείριση στρες'];
 var FAQ=[
- ['Πόσο διαρκεί μια συνεδρία;','Η συνεδρία διαρκεί 50 λεπτά για ατομικές συναντήσεις και 60 λεπτά για ζευγάρια. Η γνωριμία διαρκεί 15 λεπτά.'],
+ ['Πόσο διαρκεί μια συνεδρία;','Η συνεδρία διαρκεί 50 λεπτά για ατομικές συναντήσεις και 60 λεπτά για ζευγάρια.'],
  ['Είναι όσα λέμε εμπιστευτικά;','Ναι. Η εχεμύθεια είναι θεμελιώδης αρχή της δουλειάς μου. Οι σημειώσεις φυλάσσονται κρυπτογραφημένες και δεν κοινοποιούνται σε κανέναν, εκτός από τις περιπτώσεις που ορίζει ο νόμος.'],
  ['Μπορώ να κάνω τις συνεδρίες online;','Φυσικά. Λαμβάνεις αυτόματα σύνδεσμο Google Meet στο email σου και δεν χρειάζεσαι κάποια εγκατάσταση.'],
  ['Πόσες συνεδρίες θα χρειαστώ;','Εξαρτάται από τον στόχο σου. Συνήθως ξεκινάμε με εβδομαδιαίες συναντήσεις και αξιολογούμε μαζί την πορεία κάθε λίγες εβδομάδες.'],
@@ -813,14 +812,14 @@ $('#ctForm').onsubmit=function(e){e.preventDefault();var n=$('#ctName'),m=$('#ct
 Psy.tabs($('#lgTabs'));
 /* ---------- quiz ---------- */
 var Q=[
- ['Για ποιον ζητάς στήριξη;',[['Για τον εαυτό μου','ind'],['Για τη σχέση μου','couple'],['Για το παιδί ή τον έφηβό μου','teen'],['Δεν ξέρω ακόμη','intro']]],
- ['Τι σε απασχολεί περισσότερο αυτόν τον καιρό;',[['Άγχος, ένταση ή ανησυχία','ind'],['Επικοινωνία και συγκρούσεις στη σχέση','couple'],['Η συμπεριφορά ή η διάθεση του παιδιού μου','teen'],['Κάτι που δεν μπορώ ακόμη να ονομάσω','intro']]],
+ ['Για ποιον ζητάς στήριξη;',[['Για τον εαυτό μου','ind'],['Για τη σχέση μου','couple'],['Για το παιδί ή τον έφηβό μου','teen'],['Δεν ξέρω ακόμη','ind']]],
+ ['Τι σε απασχολεί περισσότερο αυτόν τον καιρό;',[['Άγχος, ένταση ή ανησυχία','ind'],['Επικοινωνία και συγκρούσεις στη σχέση','couple'],['Η συμπεριφορά ή η διάθεση του παιδιού μου','teen'],['Κάτι που δεν μπορώ ακόμη να ονομάσω','ind']]],
  ['Πώς προτιμάς να συναντιόμαστε;',[['Δια ζώσης στη Θεσσαλονίκη','p'],['Online από το σπίτι','o'],['Δεν με πειράζει','x']]],
- ['Πόσο έτοιμος/η νιώθεις να ξεκινήσεις;',[['Είμαι έτοιμος/η','ind'],['Θέλω πρώτα να γνωριστούμε','intro'],['Θέλω πρώτα να ενημερωθώ','intro']]],
- ['Τι θα σε βοηθούσε περισσότερο;',[['Πρακτικά εργαλεία για την καθημερινότητα','ind'],['Να ακουστούμε και οι δύο','couple'],['Να κατανοήσω καλύτερα τον έφηβο','teen'],['Έναν χώρο να μιλήσω χωρίς πίεση','intro']]]
+ ['Πόσο έτοιμος/η νιώθεις να ξεκινήσεις;',[['Είμαι έτοιμος/η','ind'],['Θέλω πρώτα να γνωριστούμε','ind'],['Θέλω πρώτα να ενημερωθώ','ind']]],
+ ['Τι θα σε βοηθούσε περισσότερο;',[['Πρακτικά εργαλεία για την καθημερινότητα','ind'],['Να ακουστούμε και οι δύο','couple'],['Να κατανοήσω καλύτερα τον έφηβο','teen'],['Έναν χώρο να μιλήσω χωρίς πίεση','ind']]]
 ];
-var qs;function quizInit(){qs={i:0,sc:{ind:0,couple:0,teen:0,intro:0},mode:'x'};quizRender()}
-function quizRender(){var b=$('#quizBox');if(qs.i>=Q.length){var best='intro',mx=-1;['intro','ind','couple','teen'].forEach(function(k){if(qs.sc[k]>mx){mx=qs.sc[k];best=k}});if(best==='ind'&&qs.mode==='o')best='online';var s=svcById(best);
+var qs;function quizInit(){qs={i:0,sc:{ind:0,couple:0,teen:0},mode:'x'};quizRender()}
+function quizRender(){var b=$('#quizBox');if(qs.i>=Q.length){var best='ind',mx=-1;['ind','couple','teen'].forEach(function(k){if(qs.sc[k]>mx){mx=qs.sc[k];best=k}});if(best==='ind'&&qs.mode==='o')best='online';var s=svcById(best);
   b.innerHTML='<span class="badge b-ok nodot">Πρόταση για σένα</span><h2 style="margin-top:12px">'+s.n+'</h2><p class="lead">'+s.t+'</p><p class="muted small">'+s.d+' λεπτά · '+(s.p?G.eur(s.p):'Δωρεάν')+'. Είναι απλώς μια πρόταση· μπορείς να αλλάξεις γνώμη οποιαδήποτε στιγμή.</p><div class="row" style="margin-top:20px"><button class="btn btn-primary" data-go="book" data-svc="'+s.id+'" data-pre="'+(qs.mode==='o'?'online':'person')+'">Κλείσε ραντεβού</button><button class="btn btn-ghost" id="qRe">Ξανά από την αρχή</button></div>';$('#qRe').onclick=quizInit;Psy.icons(b);return}
  var q=Q[qs.i];b.innerHTML='<p class="caption">Ερώτηση '+(qs.i+1)+' από '+Q.length+'</p><div style="height:6px;border-radius:9px;background:var(--border);margin:8px 0 20px"><div style="height:6px;border-radius:9px;background:var(--brand);width:'+(qs.i/Q.length*100)+'%"></div></div><h2 style="font-size:24px;line-height:32px">'+q[0]+'</h2><div class="stack" style="margin-top:16px">'+q[1].map(function(o,i){return '<button class="choice q-opt" data-o="'+i+'"><span>'+o[0]+'</span></button>'}).join('')+'</div>'+(qs.i?'<button class="btn btn-ghost btn-sm" id="qBack" style="margin-top:16px"><i data-i="left"></i>Πίσω</button>':'');
  $$('[data-o]',b).forEach(function(x){x.onclick=function(){var v=q[1][+x.dataset.o][1];if(v==='p'||v==='o'||v==='x')qs.mode=v;else qs.sc[v]++;qs.i++;quizRender()}});var qb=$('#qBack');if(qb)qb.onclick=function(){qs.i--;quizRender()};Psy.icons(b)}
