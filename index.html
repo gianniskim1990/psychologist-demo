@@ -375,11 +375,10 @@ img{display:block;max-width:100%}
     <span class="mono" aria-hidden="true">ΜΠ</span>
     <span>Δρ. Μαρία Παπαδοπούλου<small>Ψυχολόγος – Ψυχοθεραπεύτρια</small></span></button>
   <nav class="nav" id="nav" aria-label="Κύρια πλοήγηση">
-    <button data-go="home" data-en="Home">Αρχική</button><button data-go="about" data-en="About">Η ψυχολόγος</button><button data-go="services" data-en="Services">Υπηρεσίες</button><button data-go="blog" data-en="Blog">Blog</button><button data-go="contact" data-en="Contact">Επικοινωνία</button><button data-go="portal" data-en="Client portal">Πύλη πελάτη</button>
+    <button data-go="home">Αρχική</button><button data-go="about">Η ψυχολόγος</button><button data-go="services">Υπηρεσίες</button><button data-go="blog">Blog</button><button data-go="contact">Επικοινωνία</button><button data-go="portal">Πύλη πελάτη</button>
   </nav>
   <div class="row" style="gap:8px">
-    <div class="seg hide-m" role="group" aria-label="Γλώσσα"><button id="lgEl" aria-pressed="true" aria-label="Ελληνικά">ΕΛ</button><button id="lgEn" aria-pressed="false" aria-label="English">EN</button></div>
-    <button class="btn btn-primary btn-sm" data-go="book" data-en="Book a session">Κλείσε ραντεβού</button>
+    <button class="btn btn-primary btn-sm" data-go="book">Κλείσε ραντεβού</button>
     <button class="btn btn-ghost btn-sm menu-btn" id="menuBtn" aria-label="Μενού" aria-expanded="false"><i data-i="menu"></i></button>
   </div>
 </div></header>
@@ -389,9 +388,9 @@ img{display:block;max-width:100%}
   <div class="hero2">
    <div>
     <span class="eyebrow">Ψυχολόγος · Ψυχοθεραπεύτρια · Θεσσαλονίκη</span>
-    <h1 data-en="A calm, safe space to talk — at your own pace.">Ένας ασφαλής χώρος για να μιλήσεις, <em>με τον δικό σου ρυθμό.</em></h1>
-    <p class="lead" data-en="Psychotherapy and counselling in Thessaloniki and online, without rush and without judgement.">Ψυχοθεραπεία και συμβουλευτική στη Θεσσαλονίκη και online, χωρίς βιασύνη και χωρίς κριτική.</p>
-    <div class="row" style="margin-top:32px"><button class="btn btn-primary btn-lg" data-go="book" data-en="Book a session">Κλείσε ραντεβού</button><button class="btn btn-secondary btn-lg" data-go="quiz" data-en="Find what suits you">Βρες τι σου ταιριάζει</button></div>
+    <h1>Ένας ασφαλής χώρος για να μιλήσεις, <em>με τον δικό σου ρυθμό.</em></h1>
+    <p class="lead">Ψυχοθεραπεία και συμβουλευτική στη Θεσσαλονίκη και online, χωρίς βιασύνη και χωρίς κριτική.</p>
+    <div class="row" style="margin-top:32px"><button class="btn btn-primary btn-lg" data-go="book">Κλείσε ραντεβού</button><button class="btn btn-secondary btn-lg" data-go="quiz">Βρες τι σου ταιριάζει</button></div>
    </div>
    <div class="hero-img"><img src="https://images.unsplash.com/photo-1754037783933-c25ff9f68f87?auto=format&fit=crop&q=75&w=1000&h=1250" alt="Ήσυχη γωνιά με πολυθρόνα και φυτό στο γραφείο συνεδριών" fetchpriority="high">
     <div class="hero-note"><strong>15 λεπτά, δωρεάν</strong>Η πρώτη γνωριμία, χωρίς καμία δέσμευση.</div></div>
@@ -660,9 +659,6 @@ function go(p,d){d=d||{};$$('section[data-page]').forEach(function(s){s.hidden=s
 document.addEventListener('click',function(e){var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go,t.dataset)}});
 $('#menuBtn').addEventListener('click',function(){var o=$('#nav').classList.toggle('open');this.setAttribute('aria-expanded',o)});
 document.addEventListener('click',function(e){var c=e.target.closest('[data-cookie]');if(c){$('#cookie').hidden=true;Psy.toast(c.dataset.cookie==='all'?'Οι προτιμήσεις cookies αποθηκεύτηκαν (όλα)':'Αποθηκεύτηκε: μόνο απαραίτητα cookies','shield')}});
-/* language */
-function lang(l){$('#lgEl').setAttribute('aria-pressed',l==='el');$('#lgEn').setAttribute('aria-pressed',l==='en');document.documentElement.lang=l;$$('[data-en]').forEach(function(el){var tn=el.firstElementChild&&el.tagName==='BUTTON'&&el.querySelector('i')?el.lastChild:null;if(!el.dataset.el)el.dataset.el=tn?tn.textContent:el.textContent;var v=l==='en'?el.dataset.en:el.dataset.el;if(tn)tn.textContent=v;else el.textContent=v})}
-$('#lgEl').onclick=function(){lang('el')};$('#lgEn').onclick=function(){lang('en')};
 
 /* ---------- home / services ---------- */
 $('#topics').innerHTML=S.TOPICS.map(function(t,i){return '<li><span>0'+(i+1)+'</span>'+t+'</li>'}).join('');
