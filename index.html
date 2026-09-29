@@ -261,11 +261,118 @@ i[data-i] svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:
   doc.addEventListener('DOMContentLoaded',function(){icons()});
   if(doc.readyState!=='loading')icons();
 })();
-</script></head><body>
+</script><style>
+/* ===== redesign: editorial / photographic ===== */
+:root,[data-theme="light"]{--surface:#f8f4ed;--surface-sunken:#efe8dc;--deep:#2b4133;--on-deep:#f3efe6;--deep-soft:#3b5645;--ink:#22271f;--radius-lg:6px;--radius-md:4px;--radius-sm:4px}
+[data-theme="dark"]{--deep:#0f1a14;--on-deep:#ece8de;--deep-soft:#1a2a20}
+h1,h2,h3,h4{font-weight:400;letter-spacing:-.015em}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.05}
+h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12}
+h3{font-weight:500}
+.section{padding:64px 0}@media(min-width:860px){.section{padding:112px 0}}
+.eyebrow,.kicker{font:600 12.5px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block}
+.eyebrow{margin-bottom:20px}
+.btn{border-radius:2px;letter-spacing:.01em}
+.btn-lg{min-height:56px;padding:14px 32px}
+.btn-primary{background:var(--deep);color:var(--on-deep)}.btn-primary:hover{background:var(--deep-soft);color:var(--on-deep)}
+.btn-secondary{border-color:var(--deep);color:var(--deep)}.btn-secondary:hover{background:var(--deep);color:var(--on-deep)}
+[data-theme="dark"] .btn-primary{background:var(--brand);color:var(--on-brand)}
+[data-theme="dark"] .btn-secondary{border-color:var(--brand);color:var(--brand)}
+.card{border-radius:4px;box-shadow:none}
+.site-header{background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.brand-mark{font-weight:500;font-size:19px;letter-spacing:-.01em;gap:12px}
+.mono{width:40px;height:40px;border:1.5px solid var(--deep);border-radius:50%;display:grid;place-items:center;font:500 15px/1 var(--font-serif);color:var(--deep);flex:none;letter-spacing:.02em}
+[data-theme="dark"] .mono{border-color:var(--brand);color:var(--brand)}
+.nav button,.nav a{border-radius:2px;font-weight:600;font-size:14.5px}
+.nav button[aria-current=page]{background:none;color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent);border-radius:0}
+.seg{border-radius:2px}.seg button{border-radius:2px}
+img{display:block;max-width:100%}
+
+/* hero */
+.hero2{display:grid;gap:40px;padding:32px 0 56px;align-items:center}
+@media(min-width:900px){.hero2{grid-template-columns:1.05fr 1fr;gap:72px;padding:64px 0 88px}}
+.hero2 h1{margin-bottom:24px}.hero2 h1 em{font-style:italic;color:var(--brand)}
+.hero2 .lead{font-size:20px;line-height:32px;color:var(--ink-muted);max-width:46ch}
+.hero-img{position:relative}
+.hero-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 6px 6px}
+.hero-note{position:absolute;left:-16px;bottom:32px;background:var(--surface-raised);border:1px solid var(--border);padding:16px 20px;max-width:230px;box-shadow:var(--shadow-md);font-size:14px;line-height:20px}
+.hero-note strong{display:block;font:500 22px/1.1 var(--font-serif);margin-bottom:4px}
+@media(max-width:640px){.hero-note{left:8px}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border)}
+.facts div{padding:24px 24px 24px 0}
+.facts b{display:block;font:400 36px/1.1 var(--font-serif);color:var(--deep)}[data-theme="dark"] .facts b{color:var(--brand)}
+.facts span{font-size:14px;color:var(--ink-muted)}
+
+/* intro */
+.split2{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.split2{grid-template-columns:.9fr 1.1fr;gap:96px}}
+.portrait{position:relative;isolation:isolate}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.portrait::after{content:"";position:absolute;inset:16px -16px -16px 16px;border:1.5px solid var(--accent);border-radius:6px;z-index:-1}
+.sign{font:italic 400 24px/1.2 var(--font-serif);color:var(--brand);margin-top:8px}
+
+/* two ways */
+.ways{display:grid;gap:20px}@media(min-width:800px){.ways{grid-template-columns:1fr 1fr}}
+.way{position:relative;min-height:420px;border-radius:6px;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.way img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.way:hover img{transform:scale(1.04)}
+.way::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,22,17,.88) 0%,rgba(14,22,17,.35) 55%,rgba(14,22,17,0) 100%);z-index:1}
+.way>div{position:relative;z-index:2;padding:32px}
+.way h3{color:#fff;font-size:28px;line-height:1.15;margin-bottom:8px}.way p{color:#e8e3d6;margin-bottom:18px;max-width:42ch}
+.way .btn{border-color:#fff;color:#fff}.way .btn:hover{background:#fff;color:#111}
+
+/* topics */
+.topics{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:0 64px}
+@media(min-width:760px){.topics{grid-template-columns:1fr 1fr}}
+.topics li{display:flex;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--border-strong);font:400 21px/28px var(--font-serif)}
+.topics li span{font:600 12px/1 var(--font-sans);letter-spacing:.1em;color:var(--accent);min-width:22px}
+
+/* dark process band */
+.deep{background:var(--deep);color:var(--on-deep)}
+.deep h2,.deep h4{color:var(--on-deep)}.deep .muted{color:#b9c4b8}
+.deep .numbered li::before{background:none;border:1.5px solid var(--accent);color:#f0b9a2;border-radius:50%}
+
+/* quote band */
+.qband{position:relative;color:#fff;text-align:center;padding:120px 0;overflow:hidden}
+.qband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.qband::before{content:"";position:absolute;inset:0;background:rgba(15,26,20,.62);z-index:1}
+.qband .container{position:relative;z-index:2;max-width:820px}
+.qband blockquote{margin:0;font:400 clamp(26px,3.6vw,40px)/1.25 var(--font-serif);font-style:italic}
+
+/* blog */
+.pcard{display:flex;flex-direction:column;gap:16px}
+.pcard .thumb{aspect-ratio:3/2;border-radius:4px;overflow:hidden;display:block;padding:0}
+.pcard .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pcard:hover .thumb img{transform:scale(1.04)}
+.feat{display:grid;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface-raised)}
+@media(min-width:800px){.feat{grid-template-columns:1.2fr 1fr}}
+.feat-img img{width:100%;height:100%;min-height:280px;object-fit:cover}
+.feat-b{padding:40px}.feat-b h2{font-size:32px;line-height:1.15;margin:12px 0 14px}.feat-b h2 a{color:var(--ink);text-decoration:none}
+.art-cover{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:6px}
+.chip{border-radius:2px}
+
+/* services */
+.svc{display:flex;flex-direction:column;background:var(--surface-raised);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.svc img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.svc-b{padding:24px 28px 28px;display:flex;flex-direction:column;flex:1}.svc-b p{flex:1}
+.svc-meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding:14px 0;margin:8px 0 16px;font-size:15px}
+.svc-meta span{display:flex;gap:8px;align-items:center;color:var(--ink-muted)}.svc-meta strong{font:500 22px/1 var(--font-serif)}
+
+/* about + misc */
+.photo-band{display:grid;gap:16px;margin:8px 0 8px}@media(min-width:800px){.photo-band{grid-template-columns:1fr 1.4fr}}
+.photo-band img{width:100%;height:100%;object-fit:cover;border-radius:6px;min-height:260px}
+.mapimg{position:relative;border-radius:6px;overflow:hidden;min-height:300px}
+.mapimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.map iframe{border:0;width:100%;height:100%;filter:saturate(.7)}
+.hero{background:var(--deep);color:var(--on-deep);border-radius:6px}.hero h2,.hero h1{color:var(--on-deep)}.hero .lead{color:var(--on-deep)}.hero .btn-primary{background:var(--on-deep);color:var(--deep)}
+.footer{background:var(--deep);color:var(--on-deep)}.footer a{color:var(--on-deep)}.footer .muted{color:#b9c4b8}
+.icon-bubble{border-radius:50%;background:none;border:1.5px solid var(--border-strong);color:var(--deep)}[data-theme="dark"] .icon-bubble{color:var(--brand)}
+.badge{border-radius:2px}
+</style></head><body>
 <a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
 <header class="site-header"><div class="container">
   <button class="brand-mark" data-go="home" aria-label="Δρ. Μαρία Παπαδοπούλου – αρχική σελίδα">
-    <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true"><circle cx="14" cy="19" r="12" style="fill:var(--brand)"/><circle cx="25" cy="19" r="12" style="fill:var(--blue);opacity:.8"/></svg>
+    <span class="mono" aria-hidden="true">ΜΠ</span>
     <span>Δρ. Μαρία Παπαδοπούλου<small>Ψυχολόγος – Ψυχοθεραπεύτρια</small></span></button>
   <nav class="nav" id="nav" aria-label="Κύρια πλοήγηση">
     <button data-go="home" data-en="Home">Αρχική</button><button data-go="about" data-en="About">Η ψυχολόγος</button><button data-go="services" data-en="Services">Υπηρεσίες</button><button data-go="blog" data-en="Blog">Blog</button><button data-go="contact" data-en="Contact">Επικοινωνία</button><button data-go="portal" data-en="Client portal">Πύλη πελάτη</button>
@@ -278,45 +385,47 @@ i[data-i] svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:
 </div></header>
 <main id="main" tabindex="-1">
 <section data-page="home">
- <div class="container" style="padding-top:24px">
-  <div class="hero">
+ <div class="container">
+  <div class="hero2">
    <div>
-    <span class="badge b-brand nodot" style="margin-bottom:16px"><i data-i="lock"></i>Εχεμύθεια και σεβασμός σε κάθε συνεδρία</span>
-    <h1 data-en="A calm, safe space to talk — at your own pace.">Ένας ασφαλής χώρος για να μιλήσεις, με τον δικό σου ρυθμό.</h1>
+    <span class="eyebrow">Ψυχολόγος · Ψυχοθεραπεύτρια · Θεσσαλονίκη</span>
+    <h1 data-en="A calm, safe space to talk — at your own pace.">Ένας ασφαλής χώρος για να μιλήσεις, <em>με τον δικό σου ρυθμό.</em></h1>
     <p class="lead" data-en="Psychotherapy and counselling in Thessaloniki and online, without rush and without judgement.">Ψυχοθεραπεία και συμβουλευτική στη Θεσσαλονίκη και online, χωρίς βιασύνη και χωρίς κριτική.</p>
-    <div class="row" style="margin-top:24px"><button class="btn btn-primary btn-lg" data-go="book" data-en="Book a session">Κλείσε ραντεβού</button><button class="btn btn-secondary btn-lg" data-go="quiz" data-en="Find what suits you">Βρες τι σου ταιριάζει</button></div>
-    <p class="caption" style="margin-top:14px"><i data-i="clock"></i> Η πρώτη γνωριμία διαρκεί 15 λεπτά και είναι δωρεάν.</p>
+    <div class="row" style="margin-top:32px"><button class="btn btn-primary btn-lg" data-go="book" data-en="Book a session">Κλείσε ραντεβού</button><button class="btn btn-secondary btn-lg" data-go="quiz" data-en="Find what suits you">Βρες τι σου ταιριάζει</button></div>
    </div>
-   <svg class="pebbles" viewBox="0 0 400 340" role="img" aria-label="Απλά στρογγυλά σχήματα σε φυσικούς τόνους">
-    <rect x="30" y="40" width="190" height="190" rx="95" style="fill:var(--brand)"/>
-    <rect x="200" y="120" width="170" height="170" rx="85" style="fill:var(--blue)"/>
-    <rect x="120" y="190" width="120" height="120" rx="60" style="fill:var(--accent-soft)"/>
-    <rect x="270" y="20" width="90" height="90" rx="45" style="fill:var(--surface-raised)"/>
-    <path d="M60 300a60 60 0 0 1 120 0z" style="fill:var(--surface-raised)"/>
-   </svg>
+   <div class="hero-img"><img src="https://images.unsplash.com/photo-1754037783933-c25ff9f68f87?auto=format&fit=crop&q=75&w=1000&h=1250" alt="Ήσυχη γωνιά με πολυθρόνα και φυτό στο γραφείο συνεδριών" fetchpriority="high">
+    <div class="hero-note"><strong>15 λεπτά, δωρεάν</strong>Η πρώτη γνωριμία, χωρίς καμία δέσμευση.</div></div>
+  </div>
+  <div class="facts">
+   <div><b>12+</b><span>χρόνια κλινικής εμπειρίας</span></div>
+   <div><b>50΄</b><span>διάρκεια κάθε συνεδρίας</span></div>
+   <div><b>2 τρόποι</b><span>δια ζώσης ή online</span></div>
+   <div><b>100%</b><span>εχεμύθεια, σε κάθε συνεδρία</span></div>
   </div>
  </div>
 
- <div class="section"><div class="container grid g-2" style="align-items:center;gap:40px">
-  <div class="row" style="justify-content:center"><div style="width:220px;height:220px;border-radius:50%;background:var(--surface-sunken);display:flex;align-items:center;justify-content:center;font:500 64px/1 var(--font-serif);color:var(--brand-strong);border:8px solid var(--brand-soft)" role="img" aria-label="Μονόγραμμα Μ.Π.">ΜΠ</div></div>
-  <div><h2>Χαίρομαι που βρέθηκες εδώ</h2><p class="lead">Είμαι η Μαρία Παπαδοπούλου, ψυχολόγος με εξειδίκευση στη γνωσιακή-συμπεριφορική ψυχοθεραπεία. Δουλεύω με ενήλικες, εφήβους και ζευγάρια, σε ένα πλαίσιο ζεστό και εχέμυθο.</p><p class="muted">Πιστεύω ότι η αλλαγή έρχεται όταν νιώθεις ασφαλής να εξερευνήσεις όσα σε απασχολούν. Δεν χρειάζεται να έχεις «μεγάλο πρόβλημα» για να ζητήσεις στήριξη.</p><button class="btn btn-secondary" data-go="about">Διάβασε περισσότερα</button></div>
+ <div class="section"><div class="container split2">
+  <div class="portrait"><img loading="lazy" src="https://images.unsplash.com/photo-1581065178047-8ee15951ede6?auto=format&fit=crop&q=75&w=900&h=1125" alt="Πορτρέτο της ψυχολόγου"></div>
+  <div><span class="eyebrow">Γνωριμία</span><h2>Χαίρομαι που βρέθηκες εδώ</h2><p class="lead">Είμαι η Μαρία Παπαδοπούλου, ψυχολόγος με εξειδίκευση στη γνωσιακή-συμπεριφορική ψυχοθεραπεία. Δουλεύω με ενήλικες, εφήβους και ζευγάρια, σε ένα πλαίσιο ζεστό και εχέμυθο.</p><p class="muted">Πιστεύω ότι η αλλαγή έρχεται όταν νιώθεις ασφαλής να εξερευνήσεις όσα σε απασχολούν. Δεν χρειάζεται να έχεις «μεγάλο πρόβλημα» για να ζητήσεις στήριξη.</p><div class="sign">Μαρία Παπαδοπούλου</div><button class="btn btn-secondary" style="margin-top:24px" data-go="about">Διάβασε περισσότερα</button></div>
  </div></div>
 
  <div class="section alt"><div class="container">
-  <h2>Δύο τρόποι να συναντηθούμε</h2>
-  <div class="grid g-2" style="margin-top:24px">
-   <div class="card"><div class="row" style="align-items:flex-start;flex-wrap:nowrap"><span class="icon-bubble"><i data-i="pin"></i></span><div><h3>Δια ζώσης, στη Θεσσαλονίκη</h3><p class="muted">Ήσυχο γραφείο στο κέντρο, Τσιμισκή 45, 3ος όροφος, με ασανσέρ και εύκολη πρόσβαση με μέσα μαζικής μεταφοράς.</p><button class="btn btn-secondary btn-sm" data-go="book" data-pre="person">Κλείσε δια ζώσης</button></div></div></div>
-   <div class="card"><div class="row" style="align-items:flex-start;flex-wrap:nowrap"><span class="icon-bubble" style="background:var(--blue-soft);color:var(--blue)"><i data-i="video"></i></span><div><h3>Online, από όπου βρίσκεσαι</h3><p class="muted">Ασφαλής βιντεοκλήση μέσω Google Meet. Το σύνδεσμο τον λαμβάνεις αυτόματα στο email σου μόλις κλείσεις ραντεβού.</p><button class="btn btn-secondary btn-sm" data-go="book" data-pre="online">Κλείσε online</button></div></div></div>
+  <span class="eyebrow">Πού και πώς</span><h2 style="margin-bottom:32px">Δύο τρόποι να συναντηθούμε</h2>
+  <div class="ways">
+   <div class="way"><img loading="lazy" src="https://images.unsplash.com/photo-1787496994323-59ac5cff09f9?auto=format&fit=crop&q=75&w=1000&h=900" alt="Δύο πολυθρόνες δίπλα σε φυτό"><div><h3>Δια ζώσης, στη Θεσσαλονίκη</h3><p>Ήσυχο γραφείο στο κέντρο, Τσιμισκή 45, 3ος όροφος, με ασανσέρ και εύκολη πρόσβαση με μέσα μαζικής μεταφοράς.</p><button class="btn btn-sm" data-go="book" data-pre="person">Κλείσε δια ζώσης</button></div></div>
+   <div class="way"><img loading="lazy" src="https://images.unsplash.com/photo-1637580679264-d9b13ab94c57?auto=format&fit=crop&q=75&w=1000&h=900" alt="Άνθρωπος σε online συνεδρία με φορητό υπολογιστή"><div><h3>Online, από όπου βρίσκεσαι</h3><p>Ασφαλής βιντεοκλήση μέσω Google Meet. Το σύνδεσμο τον λαμβάνεις αυτόματα στο email σου μόλις κλείσεις ραντεβού.</p><button class="btn btn-sm" data-go="book" data-pre="online">Κλείσε online</button></div></div>
   </div>
  </div></div>
 
  <div class="section"><div class="container">
-  <h2>Θέματα με τα οποία μπορώ να σε βοηθήσω</h2>
-  <div class="row" style="gap:10px;margin-top:20px" id="topics"></div>
+  <span class="eyebrow">Θεματικές</span><h2>Θέματα με τα οποία μπορώ να σε βοηθήσω</h2>
+  <ul class="topics" id="topics"></ul>
  </div></div>
 
- <div class="section alt"><div class="container grid g-2" style="gap:48px;align-items:start">
-  <div><h2>Πώς λειτουργεί μια συνεδρία</h2><p class="muted">Χωρίς εκπλήξεις: ξέρεις από την αρχή τι να περιμένεις.</p></div>
+ <div class="qband"><img loading="lazy" src="https://images.unsplash.com/photo-1707730088436-0e55e78843d8?auto=format&fit=crop&q=75&w=1800&h=900" alt=""><div class="container"><blockquote>«Δεν χρειάζεται να έχεις μεγάλο πρόβλημα για να ζητήσεις στήριξη.»</blockquote></div></div>
+
+ <div class="section deep"><div class="container grid g-2" style="gap:64px;align-items:start">
+  <div><span class="eyebrow" style="color:#f0b9a2">Η διαδικασία</span><h2>Πώς λειτουργεί μια συνεδρία</h2><p class="muted">Χωρίς εκπλήξεις: ξέρεις από την αρχή τι να περιμένεις.</p></div>
   <ol class="numbered">
    <li><div><h4>Κλείνεις ραντεβού online</h4><p class="muted small">Επιλέγεις υπηρεσία, ημέρα και ώρα σε δύο λεπτά, χωρίς τηλέφωνο.</p></div></li>
    <li><div><h4>Γνωριζόμαστε</h4><p class="muted small">Στην πρώτη συνάντηση συζητάμε τι σε φέρνει και τι ελπίζεις να αλλάξει.</p></div></li>
@@ -331,23 +440,24 @@ i[data-i] svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:
  </div></div>
 
  <div class="section alt"><div class="container">
-  <div class="row between" style="margin-bottom:24px"><h2 style="margin:0">Τελευταία άρθρα</h2><button class="btn btn-secondary btn-sm" data-go="blog">Όλα τα άρθρα</button></div>
+  <div class="row between" style="margin-bottom:32px;align-items:flex-end"><div><span class="eyebrow" style="margin-bottom:12px">Blog</span><h2 style="margin:0">Τελευταία άρθρα</h2></div><button class="btn btn-secondary btn-sm" data-go="blog">Όλα τα άρθρα</button></div>
   <div class="grid g-auto" id="homeBlog"></div>
  </div></div>
 
- <div class="section"><div class="container grid g-2" style="gap:32px">
-  <div><h2>Επικοινωνία</h2>
+ <div class="section"><div class="container grid g-2" style="gap:48px;align-items:stretch">
+  <div><span class="eyebrow">Επικοινωνία</span><h2>Ας μιλήσουμε</h2>
    <ul class="ico-list">
     <li><span class="icon-bubble"><i data-i="pin"></i></span><div>Τσιμισκή 45, 3ος όροφος<br>546 23 Θεσσαλονίκη</div></li>
     <li><span class="icon-bubble"><i data-i="phone"></i></span><div>2310 123 456<br><span class="caption">Δευτέρα–Παρασκευή, 10:00–20:00</span></div></li>
     <li><span class="icon-bubble"><i data-i="mail"></i></span><div>info@papadopoulou-psychologist.example</div></li>
-   </ul><button class="btn btn-primary" style="margin-top:20px" data-go="contact">Στείλε μας μήνυμα</button></div>
-  <div class="map" role="img" aria-label="Χάρτης: Τσιμισκή 45, Θεσσαλονίκη"><svg viewBox="0 0 400 250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><path d="M0 170 C90 140 160 200 260 150 S380 130 400 140 V250 H0Z" style="fill:var(--brand-soft)"/><path d="M-10 60 L410 100 M120 -10 L180 260 M300 -10 L250 260" style="stroke:var(--surface-raised);stroke-width:14;fill:none"/><path d="M-10 190 L410 40" style="stroke:var(--surface-raised);stroke-width:8;fill:none"/><circle cx="200" cy="110" r="14" style="fill:var(--accent)"/><circle cx="200" cy="110" r="5" style="fill:var(--on-accent)"/></svg></div>
+   </ul><button class="btn btn-primary" style="margin-top:24px" data-go="contact">Στείλε μας μήνυμα</button></div>
+  <div class="mapimg"><img loading="lazy" src="https://images.unsplash.com/photo-1613538384222-cd71e8488d7a?auto=format&fit=crop&q=75&w=1000&h=800" alt="Δρόμος στο κέντρο της Θεσσαλονίκης"></div>
  </div></div>
 </section>
 <section data-page="about" hidden>
  <div class="container"><div class="page-title"><h1>Η ψυχολόγος</h1><p class="lead muted">Γνωσιακή-συμπεριφορική ψυχοθεραπεία με ζεστασιά και επιστημονική τεκμηρίωση.</p></div>
- <div class="grid g-2" style="gap:48px;margin-top:24px;align-items:start">
+ <div class="photo-band" style="margin-top:24px"><img src="https://images.unsplash.com/photo-1581065178047-8ee15951ede6?auto=format&fit=crop&q=75&w=700&h=800" alt="Πορτρέτο της ψυχολόγου" style="object-position:center 20%"><img src="https://images.unsplash.com/photo-1754037783933-c25ff9f68f87?auto=format&fit=crop&q=75&w=1200&h=800" alt="Το γραφείο συνεδριών"></div>
+ <div class="grid g-2" style="gap:48px;margin-top:40px;align-items:start">
   <div class="prose stack">
    <h2 style="margin-top:0">Βιογραφικό</h2>
    <p>Είμαι ψυχολόγος και ψυχοθεραπεύτρια με περισσότερα από δώδεκα χρόνια κλινικής εμπειρίας. Εργάζομαι με ενήλικες, εφήβους και ζευγάρια που περνούν δύσκολες περιόδους ή θέλουν απλώς να γνωρίσουν καλύτερα τον εαυτό τους.</p>
@@ -431,7 +541,7 @@ i[data-i] svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:
   <div class="stack">
    <div class="card"><h3>Στοιχεία</h3><ul class="ico-list"><li><i data-i="pin"></i><div>Τσιμισκή 45, 3ος όροφος, 546 23 Θεσσαλονίκη</div></li><li><i data-i="phone"></i><div>2310 123 456</div></li><li><i data-i="mail"></i><div>info@papadopoulou-psychologist.example</div></li></ul></div>
    <div class="card"><h3>Ώρες λειτουργίας</h3><table class="table" style="font-size:15px"><tbody><tr><td>Δευτέρα – Παρασκευή</td><td class="num">10:00 – 20:00</td></tr><tr><td>Σάββατο</td><td class="num">10:00 – 13:00</td></tr><tr><td>Κυριακή</td><td class="num">Κλειστά</td></tr></tbody></table></div>
-   <div class="map" role="img" aria-label="Χάρτης: Τσιμισκή 45, Θεσσαλονίκη"><svg viewBox="0 0 400 250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"><path d="M0 170 C90 140 160 200 260 150 S380 130 400 140 V250 H0Z" style="fill:var(--brand-soft)"/><path d="M-10 60 L410 100 M120 -10 L180 260 M300 -10 L250 260" style="stroke:var(--surface-raised);stroke-width:14;fill:none"/><circle cx="200" cy="110" r="14" style="fill:var(--accent)"/><circle cx="200" cy="110" r="5" style="fill:var(--on-accent)"/></svg></div>
+   <div class="map" style="aspect-ratio:16/10"><iframe title="Χάρτης: Τσιμισκή 45, Θεσσαλονίκη" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%CE%A4%CF%83%CE%B9%CE%BC%CE%B9%CF%83%CE%BA%CE%AE+45+%CE%98%CE%B5%CF%83%CF%83%CE%B1%CE%BB%CE%BF%CE%BD%CE%AF%CE%BA%CE%B7&output=embed"></iframe></div>
    <a class="btn btn-secondary btn-sm" href="https://www.google.com/maps/search/?api=1&query=Τσιμισκή+45+Θεσσαλονίκη" target="_blank" rel="noopener">Άνοιγμα στους Χάρτες Google</a>
   </div></div></div><div style="height:64px"></div>
 </section>
@@ -495,6 +605,9 @@ i[data-i] svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:
 <script>
 (function(){
 var $=Psy.$,$$=Psy.$$,G=Psy.G,esc=Psy.esc,T=Psy.TODAY;
+var IMG=function(id,w,h){return 'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&q=70&w='+w+(h?'&h='+h:'')};
+var SVC_IMG={intro:'1573497491208-6b1acb260507',ind:'1573497620053-ea5300f94f21',couple:'1551801679-787f2accc402',teen:'1603977385628-d7e6d19f0370',online:'1637580679264-d9b13ab94c57'};
+var BLOG_IMG={1:'1620809975674-10b8ff5f8e58',2:'1542338347-4fff3276af78',3:'1589169011402-8b2cbd1ee593',4:'1758520144705-b39e11ff32e3',5:'1694274928091-7d533e146597',6:'1787496994323-59ac5cff09f9'};
 var SVC=[
  {id:'intro',n:'Δωρεάν γνωριμία',d:15,p:0,i:'sparkle',t:'Μια σύντομη τηλεφωνική ή online συζήτηση για να γνωριστούμε και να δεις αν νιώθεις άνετα να συνεχίσουμε.'},
  {id:'ind',n:'Ατομική ψυχοθεραπεία',d:50,p:60,i:'user',t:'Ένας προσωπικός χώρος για άγχος, χαμηλή διάθεση, αυτοεκτίμηση, πένθος και αλλαγές στη ζωή, με γνωσιακή-συμπεριφορική προσέγγιση.'},
@@ -525,12 +638,12 @@ var BLOG=[
  {id:6,cat:'Αυτοφροντίδα',t:'Τι να περιμένεις από την πρώτη συνεδρία ψυχοθεραπείας',ex:'Αν διστάζεις επειδή δεν ξέρεις τι θα συμβεί, ιδού πώς είναι συνήθως μια πρώτη συνάντηση.',r:5,d:'20 Αυγούστου 2026',c:'ev-online',
   b:[['p','Το πρώτο ραντεβού συχνά προκαλεί αγωνία. Καλό είναι να ξέρεις ότι δεν χρειάζεται να προετοιμαστείς ούτε να έχεις «σωστά λόγια».'],['h','Τι συμβαίνει στη συνάντηση'],['p','Θα συζητήσουμε τι σε φέρνει, τι ελπίζεις να αλλάξει και πώς δουλεύουμε. Θα σου εξηγήσω το πλαίσιο της εχεμύθειας και θα έχεις χώρο για όσες ερωτήσεις θέλεις.'],['h','Πώς καταλαβαίνεις αν ταιριάζουμε'],['p','Η καλή θεραπευτική σχέση χτίζεται πάνω στην εμπιστοσύνη. Αν μετά την πρώτη συνεδρία νιώθεις ότι σε άκουσαν, είναι ένα καλό σημάδι.']]}
 ];
-window.SITE={SVC:SVC,BLOG:BLOG,TOPICS:TOPICS,FAQ:FAQ};
+window.SITE={IMG:IMG,SVC_IMG:SVC_IMG,BLOG_IMG:BLOG_IMG,SVC:SVC,BLOG:BLOG,TOPICS:TOPICS,FAQ:FAQ};
 })();
 </script>
 <script>
 (function(){
-var $=Psy.$,$$=Psy.$$,G=Psy.G,esc=Psy.esc,T=Psy.TODAY,S=SITE;
+var $=Psy.$,$$=Psy.$$,G=Psy.G,esc=Psy.esc,T=Psy.TODAY,S=SITE,IMG=S.IMG,SVC_IMG=S.SVC_IMG,BLOG_IMG=S.BLOG_IMG;
 var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 function setErr(inp,msg){var f=inp.closest('.field')||inp.parentNode,er=f.querySelector('.err');if(msg){inp.setAttribute('aria-invalid','true');if(er){er.hidden=false;er.innerHTML='<i data-i="alert"></i><span>'+msg+'</span>';Psy.icons(er)}}else{inp.removeAttribute('aria-invalid');if(er)er.hidden=true}return !msg}
 function showErr(el,msg){el.hidden=!msg;if(msg){el.innerHTML='<i data-i="alert"></i><span>'+msg+'</span>';Psy.icons(el)}}
@@ -552,12 +665,12 @@ function lang(l){$('#lgEl').setAttribute('aria-pressed',l==='el');$('#lgEn').set
 $('#lgEl').onclick=function(){lang('el')};$('#lgEn').onclick=function(){lang('en')};
 
 /* ---------- home / services ---------- */
-$('#topics').innerHTML=S.TOPICS.map(function(t){return '<span class="badge b-brand nodot" style="font-size:15px;padding:6px 16px">'+t+'</span>'}).join('');
+$('#topics').innerHTML=S.TOPICS.map(function(t,i){return '<li><span>0'+(i+1)+'</span>'+t+'</li>'}).join('');
 $('#faq').innerHTML=S.FAQ.map(function(q){return '<div class="acc"><button>'+q[0]+'<i data-i="down"></i></button><div>'+q[1]+'</div></div>'}).join('');Psy.accordion($('#faq'));
-function artCard(a){return '<article class="card link pcard" style="padding:16px"><div class="thumb '+a.c+'"><span class="badge b-brand nodot">'+a.cat+'</span></div><div><h3 style="font-size:19px;line-height:26px;margin-bottom:6px"><a href="#" data-art="'+a.id+'" style="color:var(--ink);text-decoration:none">'+a.t+'</a></h3><p class="muted small" style="margin-bottom:8px">'+a.ex+'</p><span class="caption">'+a.d+' · '+a.r+' λεπτά ανάγνωση</span></div></article>'}
+function artCard(a){return '<article class="pcard"><a href="#" data-art="'+a.id+'" class="thumb" tabindex="-1" aria-hidden="true"><img loading="lazy" src="'+IMG(BLOG_IMG[a.id],640,440)+'" alt=""></a><div><span class="kicker">'+a.cat+'</span><h3 style="font-size:21px;line-height:28px;margin:6px 0 8px"><a href="#" data-art="'+a.id+'" style="color:var(--ink);text-decoration:none">'+a.t+'</a></h3><p class="muted small" style="margin-bottom:8px">'+a.ex+'</p><span class="caption">'+a.d+' · '+a.r+' λεπτά ανάγνωση</span></div></article>'}
 $('#homeBlog').innerHTML=S.BLOG.slice(0,3).map(artCard).join('');
 document.addEventListener('click',function(e){var a=e.target.closest('[data-art]');if(a){e.preventDefault();openArt(+a.dataset.art)}});
-$('#svcGrid').innerHTML=S.SVC.map(function(s){return '<div class="card"><div class="row" style="align-items:flex-start;flex-wrap:nowrap"><span class="icon-bubble"><i data-i="'+s.i+'"></i></span><div style="flex:1"><h3>'+s.n+'</h3><p class="muted">'+s.t+'</p><div class="row" style="margin:12px 0"><span class="badge b-brand nodot"><i data-i="clock"></i>'+s.d+' λεπτά</span><span class="badge nodot"><strong>'+(s.p?G.eur(s.p):'Δωρεάν')+'</strong></span></div><button class="btn btn-primary btn-sm" data-go="book" data-svc="'+s.id+'">Κλείσε ραντεβού</button></div></div></div>'}).join('');
+$('#svcGrid').innerHTML=S.SVC.map(function(s){return '<article class="svc"><img loading="lazy" src="'+IMG(SVC_IMG[s.id],720,420)+'" alt=""><div class="svc-b"><h3>'+s.n+'</h3><p class="muted">'+s.t+'</p><div class="svc-meta"><span><i data-i="clock"></i>'+s.d+' λεπτά</span><strong>'+(s.p?G.eur(s.p):'Δωρεάν')+'</strong></div><button class="btn btn-primary btn-sm" data-go="book" data-svc="'+s.id+'">Κλείσε ραντεβού</button></div></article>'}).join('');
 
 /* ---------- booking ---------- */
 var B={step:1,svc:null,mode:'person',date:null,time:null,month:new Date(2026,9,1),sim:'ok',data:{first:'yes'},wl:false,wlDone:false,pay:'venue',coupon:false,ref:null};
@@ -673,7 +786,7 @@ Psy.tabs($('#tplTabs').parentNode);
 /* ---------- blog ---------- */
 var BL={cat:'Όλα',q:'',page:1},PER=4,CATS=['Όλα','Άγχος','Σχέσεις','Γονείς και παιδιά','Εργασιακό άγχος','Αυτοφροντίδα'];
 function blogRender(){var feat=S.BLOG[0],unf=BL.cat==='Όλα'&&!BL.q;
- $('#blogFeatured').innerHTML=unf?'<article class="hero" style="grid-template-columns:1fr;padding:0;overflow:hidden;background:var(--surface-raised);border:1px solid var(--border)"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"><div class="'+feat.c+'" style="min-height:220px;display:flex;align-items:flex-end;padding:20px"><span class="badge b-brand nodot">Προτεινόμενο · '+feat.cat+'</span></div><div style="padding:32px"><h2 style="font-size:26px;line-height:34px"><a href="#" data-art="'+feat.id+'" style="color:var(--ink);text-decoration:none">'+feat.t+'</a></h2><p class="muted">'+feat.ex+'</p><p class="caption">'+feat.d+' · '+feat.r+' λεπτά ανάγνωση</p><button class="btn btn-primary" data-art="'+feat.id+'">Διάβασε το άρθρο</button></div></div></article>':'';
+ $('#blogFeatured').innerHTML=unf?'<article class="feat"><a href="#" data-art="'+feat.id+'" class="feat-img" tabindex="-1" aria-hidden="true"><img src="'+IMG(BLOG_IMG[feat.id],1000,720)+'" alt=""></a><div class="feat-b"><span class="kicker">Προτεινόμενο · '+feat.cat+'</span><h2><a href="#" data-art="'+feat.id+'">'+feat.t+'</a></h2><p class="muted">'+feat.ex+'</p><p class="caption">'+feat.d+' · '+feat.r+' λεπτά ανάγνωση</p><button class="btn btn-primary" data-art="'+feat.id+'">Διάβασε το άρθρο</button></div></article>':'';
  $('#blogCats').innerHTML=CATS.map(function(c){return '<button class="chip" aria-pressed="'+(BL.cat===c)+'" data-cat="'+c+'">'+c+'</button>'}).join('');
  var list=S.BLOG.filter(function(a){return (BL.cat==='Όλα'||a.cat===BL.cat)&&(!BL.q||(a.t+a.ex).toLowerCase().indexOf(BL.q.toLowerCase())>-1)&&!(unf&&a.id===feat.id)});
  var pages=Math.max(1,Math.ceil(list.length/PER));if(BL.page>pages)BL.page=1;
@@ -684,7 +797,7 @@ function blogRender(){var feat=S.BLOG[0],unf=BL.cat==='Όλα'&&!BL.q;
 $('#blogQ').oninput=function(){BL.q=this.value;BL.page=1;blogRender()};
 var curArt=1;
 function openArt(id){var a=S.BLOG.filter(function(x){return x.id===id})[0];curArt=id;
- $('#artHead').innerHTML='<div class="'+a.c+'" style="height:160px;border-radius:var(--radius-lg);margin-bottom:24px" role="img" aria-label="Εξώφυλλο άρθρου"></div><span class="badge b-brand nodot">'+a.cat+'</span><h1 style="margin-top:12px;max-width:24ch">'+a.t+'</h1><p class="muted">Δρ. Μαρία Παπαδοπούλου · '+a.d+' · '+a.r+' λεπτά ανάγνωση</p>';
+ $('#artHead').innerHTML='<img class="art-cover" src="'+IMG(BLOG_IMG[a.id],1600,700)+'" alt="" style="margin-bottom:24px"><span class="kicker">'+a.cat+'</span><h1 style="margin-top:12px;max-width:24ch">'+a.t+'</h1><p class="muted">Δρ. Μαρία Παπαδοπούλου · '+a.d+' · '+a.r+' λεπτά ανάγνωση</p>';
  var toc=[],body='';a.b.forEach(function(x,i){if(x[0]==='h'){toc.push([i,x[1]]);body+='<h2 id="h'+i+'">'+x[1]+'</h2>'}else body+='<p>'+x[1]+'</p>'});
  body+='<p class="caption" style="margin-top:2em"><i data-i="info"></i> Το άρθρο έχει ενημερωτικό χαρακτήρα και δεν αντικαθιστά την ψυχολογική αξιολόγηση.</p>';
  $('#artBody').innerHTML=body;$('#artToc').innerHTML=toc.map(function(t){return '<a href="#h'+t[0]+'" data-toc="h'+t[0]+'">'+t[1]+'</a>'}).join('');
